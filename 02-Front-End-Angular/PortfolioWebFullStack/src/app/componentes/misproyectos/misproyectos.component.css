@@ -1,0 +1,135 @@
+/* ------ SECTION'S ------ */
+section {
+    align-items: center;
+    background: url(https://raw.githubusercontent.com/PaulaLemStaFe/PortfolioWebFullStack/master/02-Front-End-Angular/PortfolioWebFullStack/src/assets/img/grain.png) repeat;
+    display: flex;
+    width: 100%;
+}
+
+/* ------ PROJECT SECTION ------ */
+.project-section {
+    background-color: #D35244;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    border-radius: 3%;
+    box-shadow: 0 0 15px rgb(0 0 0 / 25%);
+    flex-direction: column;
+    font-size: 1.8em;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.project-section .heading {
+    font-size: 1.8em;
+    font-style: italic;
+    margin: 20px 0px;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 25px;
+}
+
+.project-card {
+    height: 400px;
+    margin: 25px;
+    position: relative;
+}
+
+.project-img {
+    border-radius: 20px;
+    height: 90%;
+    left: 0;
+    object-fit: fill;
+    position: absolute;
+    top: 0;
+    transition: .5s;
+    width: 100%;
+}
+
+.proyecto_5, .proyecto_3 {
+    color: #4c5057;
+}
+
+.project-content {
+    opacity: 0;
+    padding: 2%;
+    position: relative;
+    transition: .5s;
+}
+
+.project-title {
+    font-size: 1.2em;
+    text-align: center;
+    font-style: italic;
+    text-transform: capitalize;
+}
+
+.project-info {
+    font-size: 0.6em;
+    margin: 40px;
+    text-align: center;
+}
+
+.project-btn-grp {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.project-btn {
+    background: #000;
+    border: none;
+    border-radius: 20px;
+    color: #F6EDD8;
+    cursor: pointer;
+    font-size: 0.7em;
+    height: 40px;
+    text-transform: capitalize;
+}
+
+.project-btn-grp a {
+    color: #F6EDD8;
+    text-decoration: none;
+}
+
+.project-btn.live {
+    background: none;
+    border: 2px solid #F6EDD8;
+}
+
+.project-card:hover .project-img {
+    filter: blur(20px);
+}
+
+.project-card:hover .project-content {
+    opacity: 1;
+}
+
+
+
+@media screen and (max-width: 960px) {
+    .project-section .heading {
+        font-size: 1.3em;
+    }
+    .project-container {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .project-card {
+        height: auto;
+        margin: 0px;
+    }
+    .project-img {
+        height: 200px;
+        object-fit: fill;
+    }
+    .project-info {
+        margin: 0px;
+        font-size: 0.4em;
+    }
+    .project-btn {
+        font-size: 0.4em;
+    }
+}

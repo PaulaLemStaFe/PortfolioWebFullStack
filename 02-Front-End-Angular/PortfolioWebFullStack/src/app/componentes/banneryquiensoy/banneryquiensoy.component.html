@@ -1,0 +1,27 @@
+<!-- banner section -->
+<div class="inforpersonal-quiensoy" *ngIf="persona">
+    <section class="secbanneryperfil">
+        <div id="infopersonal">
+            <!--iria mi nombre y profesion la puedo poner sobre el banner o debajo del mismo-->
+            <h1 id="inicio"><strong><i>{{persona.namePersona}} </i></strong></h1>
+            <h2><strong><i>{{persona.titlePersona}} </i></strong></h2>
+        </div>
+        <div class="fotoperfil">
+            <!--imagen circularubicada en la esquina inferior izquierda del banner-->
+            <img [src]="persona.imgprofilePersona" alt="María Paula Lemos" title="María Paula Lemos" align="right">
+        </div>
+    </section>
+    <section class="secquiensoy">
+        <!--parrafo o texto describiendo un poco de mi que iría en la parte del cuerpo de la pagina-->
+        <div id="quiensoy">
+            <h2 class="heading"><strong><i>¿Quién Soy?</i></strong></h2>
+            <br>
+            <p class="sobre_mi_text">{{persona.text01Persona}}
+                <br>
+                <br>{{persona.text02Persona}}
+                <br>
+                <br>{{persona.text03Persona}}
+            </p>
+        </div>
+    </section>
+</div>

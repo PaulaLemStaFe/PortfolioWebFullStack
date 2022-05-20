@@ -1,0 +1,22 @@
+<section class="sectrabajo" id="h_trabajo">
+    <div class="trabajo">
+        <h2 class="heading"><strong><i>Experiencias Laborales</i></strong></h2>
+    </div>
+    <div *ngFor="let experiences of experiences">
+        <div>
+            {{experiences.EnterpriseExperience}}
+        </div>
+        <div>
+            {{experiences.DateTitleExperience}}
+        </div>
+        <div>
+            {{experiences.DateExperience}}
+        </div>
+        <div>
+            {{experiences.PositionExperience}}
+        </div>
+        <div>
+            {{experiences.DescriptionExperience}}
+        </div>
+    </div>
+</section>

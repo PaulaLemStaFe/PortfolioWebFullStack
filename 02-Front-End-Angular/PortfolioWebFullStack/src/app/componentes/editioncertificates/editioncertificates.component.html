@@ -1,0 +1,169 @@
+<!-- certificados section -->
+<section class="certificados" id="h_certificados main-container">
+    <div id="certificados-info">
+        <h2 class="heading"><strong><i>Certificados</i></strong>
+            <button type="button" class="icon btn btn-info" (click)="onOpenModal('add')" data-bs-toggle="modal" data-bs-target="#addCertificateModal">
+                <a class="add" alt="Agregar" title="Agregar">
+                    <i class="bi bi-plus-square-fill icons"><span class="sr-only"></span></i>
+                </a>
+            </button>
+        </h2>
+    </div>
+    <div class="formacion_list row">
+        <div class="formacion_list_item col-sm-3" *ngFor="let certificado of certifi">
+            <img class="formacion_list_img column_img d-block w-100" src="{{certificado.imgCertificate}}" alt="">
+            <h3 class="formacion_list_title column_title" id="columna_1">{{certificado.titleCertificate}}</h3>
+            <p class="formacion_list_text">{{certificado.obtainedCertificate}}</p>
+            <div class="icons">
+                <button class="icon edit btn btn-success" (click)="onOpenModal('edit', certificado)" data-bs-toggle="modal" data-bs-target="#editCertificateModal">
+                    <a alt="Editar" title="Editar">
+                        <i class="bi bi-pencil-fill icons"></i>
+                    </a>
+                </button>
+                <button class="icon btn btn-danger" (click)="onOpenModal('delete', certificado)" data-bs-toggle="modal" data-bs-target="#deleteCertificateModal">
+                    <a alt="Eliminar" title="Eliminar">
+                        <i class="bi bi-trash-fill icons"></i>
+                    </a>    
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal Add Certificate aria-hidden="true" -->
+        <div class="modal fade" id="addCertificateModal" tabindex="-1" role="dialog" aria-labelledby="addCertificateModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addCertificateModalLabel">Añadir Certificado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form #addForm="ngForm" (ngSubmit)="onAddCertificate(addForm)">
+                            <div class="form-group">
+                                <label for="imgCertificate">Url De La Imagen:</label>
+                                <input type="text" ngModel name="imgCertificate" class="form-control" id="imgCertificate" placeholder="Url de la Imagen" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="titleCertificate">Título:</label>
+                                <input type="text" ngModel name="titleCertificate" class="form-control" id="titleCertificate" placeholder="Título" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="obtainedCertificate">Obtenido:</label>
+                                <input type="text" ngModel name="obtainedCertificate" class="form-control" id="obtainedCertificate" placeholder="En curso o fecha de adquirido el Certificado" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button [disabled]="addForm.invalid" type="submit" class="btn btn-success">
+                                    Añadir Cambios
+                                </button>
+                                <button type="button" id="add-certificate-form" class="btn btn-danger" data-bs-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Edit Certificate -->
+        <div class="modal fade" id="editCertificateModal" tabindex="-1" role="dialog" aria-labelledby="editCertificateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document" ngModel="{{ editCertificate?.idCertificate }}">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updateCertificateModalLabel">Editar Certificado {{ editCertificate?.titleCertificate }}</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form #editForm="ngForm">
+                            <div class="form-group">
+                                <label for="imgCertificate">Url De La Imagen:</label>
+                                <input type="text" ngModel="{{ editCertificate?.imgCertificate }}" name="imgCertificate" class="form-control" id="imgCertificate" placeholder="Url de la Imagen">
+                            </div>
+                            <div class="form-group">
+                                <label for="titleCertificate">Título:</label>
+                                <input type="text" ngModel="{{ editCertificate?.titleCertificate }}" name="titleCertificate" class="form-control" id="titleCertificate" placeholder="Título" aria-describedby="emailHelp">
+                            </div>
+                            <div class="form-group">
+                                <label for="obtainedCertificate">Obtenido:</label>
+                                <input type="text" ngModel="{{ editCertificate?.obtainedCertificate }}" name="obtainedCertificate" class="form-control" id="obtainedCertificate" placeholder="En curso o fecha de adquirido el Certificado">
+                            </div>
+                            <div class="modal-footer">
+                                <!--<button (click)="onEditCertificate(editCertificate?.certificaId, editForm.value)" type="button" class="btn btn-success">
+                                    Guardar Cambios
+                                </button>-->
+                                <button type="button" id="edit-certificate-form" class="btn btn-danger" data-bs-dismiss="modal">
+                                    Cerrar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Delete Certificate -->
+        <div class="modal fade" id="deleteCertificateModal" tabindex="-1" role="dialog" aria-labelledby="deleteCertificateModalLabel" aria-hidden="true" data-bs-toggle="modal" data-bs-target="#deleteModelLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteCertificateModalLabel">Borrar Certificado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>¿Estás seguro de borrar el certificado {{ deleteCertificate?.titleCertificate }}?</p>
+                        <div class="modal-footer">
+                            <button (click)="onDeleteCertificate(deleteCertificate!.idCertificate)" data-bs-dismiss="modal" class="delete btn btn-danger">
+                                Si
+                            </button>
+                            <button type="button" id="add-certificate-form" class="delete btn btn-success" data-bs-dismiss="modal">
+                                No
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Delete Certificate -->
+        <div *ngIf="certifi?.length == 0" class="col-lg-12 col-md-12 col-x1-12">
+            <div class="alert alert-info" role="alert">
+                <h4 class="alert-heading">No hay Certificados</h4>
+                <p>No hay datos para mostrar, cargue nueva información.</p>
+            </div>
+        </div>
+
+        <!--<div class="formacion_list_item col-sm-3">
+            <img class="formacion_list_img column_img" [src]="miPortfolio.certificates.certificate01.img"
+                class="d-block w-100" alt="Oracle - ONE" title="Oracle - ONE">
+            <h3 class="formacion_list_title column_title" id="columna_1">{{miPortfolio.certificates.certificate01.title}}</h3>
+            <p class="formacion_list_text">{{miPortfolio.certificates.certificate01.obtained}}</p>
+        </div>
+        <div class="formacion_list_item col-sm-3">
+            <img class="formacion_list_img column_img" class="d-block w-100"
+                [src]="miPortfolio.certificates.certificate02.img" alt="Argentina Programa" title="Argentina Programa">
+            <h3 class="formacion_list_title column_title" id="columna_1">
+                {{miPortfolio.certificates.certificate02.title}}</h3>
+            <p class="formacion_list_text">{{miPortfolio.certificates.certificate02.obtained}}</p>
+        </div>
+        <div class="formacion_list_item col-sm-3">
+            <img class="formacion_list_img column_img" class="d-block w-100"
+                [src]="miPortfolio.certificates.certificate03.img" alt="ConoSur Tech" title="ConoSur Tech">
+            <h3 class="formacion_list_title column_title" id="columna_1">
+                {{miPortfolio.certificates.certificate03.title}}</h3>
+            <p class="formacion_list_text">{{miPortfolio.certificates.certificate03.obtained}}</p>
+        </div>
+        <div class="formacion_list_item col-sm-3">
+            <img class="formacion_list_img column_img" [src]="miPortfolio.certificates.certificate04.img"
+                alt="i2T Soluciones Informáticas" title="i2T Soluciones Informáticas">
+            <h3 class="formacion_list_title column_title" id="columna_1">
+                {{miPortfolio.certificates.certificate04.title}}</h3>
+            <p class="formacion_list_text">{{miPortfolio.certificates.certificate04.obtained}}</p>
+        </div>
+        <div class="formacion_list_item col-sm-3">
+            <img class="formacion_list_img column_img" [src]="miPortfolio.certificates.certificate05.img"
+                alt="E.E.T. N° 322" title="E.E.T. N° 322">
+            <h3 class="formacion_list_title column_title" id="columna_1">
+                {{miPortfolio.certificates.certificate05.title}}</h3>
+            <p class="formacion_list_text">{{miPortfolio.certificates.certificate05.obtained}}</p>
+        </div>-->
+    </div>
+</section>

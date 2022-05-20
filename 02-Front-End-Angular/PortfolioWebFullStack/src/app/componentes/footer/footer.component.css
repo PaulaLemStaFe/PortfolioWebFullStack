@@ -1,0 +1,59 @@
+/* ------ SECTION'S ------ */
+footer {
+    background: url(https://raw.githubusercontent.com/PaulaLemStaFe/PortfolioWebFullStack/master/02-Front-End-Angular/PortfolioWebFullStack/src/assets/img/grain.png) repeat;
+}
+
+/* ------ SOCIAL SECTION ------ */
+.navredes {
+    background-color: #4c5057;
+    bottom: 0;
+    margin: 0 auto;
+    position: fixed;
+    text-align: center;
+    width: 90%;
+    z-index: 100;
+}
+
+.derechos {
+    bottom: 0;
+    color: #F6EDD8;
+    font-size: 1.2em;
+}
+
+.derechos p {
+    margin-bottom: 0px;
+}
+
+.navredes ul {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.navredes li {
+    display: inline;
+    font-size: 1.2em;
+    justify-content: space-evenly;
+    list-style: none;
+    
+}
+
+.navredes .linkedin, .navredes .github {
+    padding-right: 5%;
+} 
+
+.navredes a {
+    color: #F6EDD8;
+    text-decoration: none;
+}
+
+hr {
+    margin: 0.3rem 0;
+}
+
+
+
+@media screen and (max-width: 960px) {
+    .navredes {
+        width: 100%;
+    }
+}

@@ -1,0 +1,56 @@
+/* ------ SECTION'S ------ */
+section {
+    align-items: center;
+    background: url(https://raw.githubusercontent.com/PaulaLemStaFe/PortfolioWebFullStack/master/02-Front-End-Angular/PortfolioWebFullStack/src/assets/img/grain.png) repeat;
+    display: flex;
+    width: 100%;
+}
+
+/* ------ SKILL'S SECTION ------ */
+.habilidades {
+    background-color: #e6e1d0;
+    border-bottom: 1px solid rgba(0,0,0,0.15);
+    border-radius: 3%;
+    box-shadow: 0 0 15px rgb(0 0 0 / 25%);
+    color: #383a3c;
+    flex-direction: column;
+    font-size: 1.8em;
+    margin: 0 auto;
+    padding: 10px 20px;
+}
+
+.habilidades .heading {
+    font-size: 1.8em;
+    font-style: italic;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.habilidades-columna-1, .habilidades-columna-2 {
+    font-size: 0.7em;
+}
+
+.habilidades-columna-1 li, .habilidades-columna-2 li{
+    padding: 0.2em;
+}
+
+hr {
+    margin: 0.3rem 0;
+}
+
+
+
+@media screen and (max-width: 960px) {
+    .habilidades .heading {
+        font-size: 1.3em;
+    }
+    .habilidades .row {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    .habilidades-columna-1, .habilidades-columna-2 {
+        font-size: 0.5em;
+    }
+}
